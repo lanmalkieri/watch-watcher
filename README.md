@@ -1,6 +1,5 @@
 # Watch Watcher
 
-
 This script is for watching a list of URL's that point to a watch on one of two websites.
 Only these two sites have been tested/supported.
 
@@ -16,7 +15,10 @@ Required Modules:
 * lxml 3.7.3
 * texttable 0.8.8
 
-
+To install all required packages simply run:
+```
+pip install -r requirements.txt 
+```
 
 We utilize AWS SNS for sending emails, so you'll need an AWS account with proper access key permissions to post to SNS. 
 
