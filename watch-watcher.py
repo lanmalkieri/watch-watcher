@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #---------------------------------------------------------------------------#
-# Written by: Christopher Stobie <cjstobie@gmail.com>                       #
+#                Christopher Stobie <cjstobie@gmail.com>                    #
 #---------------------------------------------------------------------------#
 import urllib2
 import lxml
@@ -15,8 +15,7 @@ from bs4 import BeautifulSoup
 #---------------------------------------------------------------------------#
 # Supported websites: dutyfreeislandshop.com & longislandwatch.com          #
 #---------------------------------------------------------------------------#
-urls = ["http://www.dutyfreeislandshop.com/citizen-nh8350-83l-automatic-50m-elegant-mens-watch",
-        "http://www.longislandwatch.com/Aeromatic_A1367_Military_Watch_p/a1367.htm"]
+urls = ["http://www.dutyfreeislandshop.com/citizen-nh8350-83l-automatic-50m-elegant-mens-watch"]
 
 watches = {}
 char_count = []
@@ -81,7 +80,7 @@ for key,val in watches.items():
             f.write(key + '\n')
             f.close()
             client = boto3.client('sns')
-            print("Publishing availability of %s to SNS") %key
+            print("Publishing availability of %s to SNS\n\n") %key
             response = client.publish(
                 TopicArn = "arn:aws:sns:us-west-2:438886243477:Watch-Watcher",
                 Message = "Watch %s is available!" %key
@@ -96,7 +95,6 @@ tab.add_rows(x)
 tab.set_cols_align(['l', 'l'])
 tab.set_cols_width([longest_product, 12])
 tab.header(['Product', 'Availability'])
-
 
 #---------------------------------------------------------------------------#
 # Output all watches in urls list and their availability                    #
