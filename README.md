@@ -25,5 +25,4 @@ We utilize AWS SNS for sending emails, so you'll need an AWS account with proper
 
 Update the url list with the url of whatever watches you want to monitor that are out of stock. Once the watch gets in stock and notifies you it will cache to a file that it notified you and prevent further emails.
 
-See for info on how to setup this up in a cron that runs every hour: https://linuxconfig.org/linux-cron-guide
-
+For info on how to setup this up in a cron that runs every hour: https://linuxconfig.org/linux-cron-guide
