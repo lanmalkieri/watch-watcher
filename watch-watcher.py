@@ -6,6 +6,8 @@ import urllib2
 import lxml
 import boto3
 import sys
+import os
+import logging
 import argparse
 import texttable as tt
 from bs4 import BeautifulSoup
@@ -21,9 +23,14 @@ watches = {}
 char_count = []
 x=[[]]
 url_status = 'not_alerted'
-cache_file = '.watch_cache'
+home = os.getenv("HOME")
+cache_file = '%s/.watch_cache' %home
+log_file = '%s/watch-watcher.log' %home
 char_count = []
 tab = tt.Texttable()
+logging.basicConfig(level=logging.INFO, 
+    filename = log_file,
+    format = '%(asctime)s %(message)s')
 
 #---------------------------------------------------------------------------#
 # Ensure our cache file exists                                              #
@@ -99,4 +106,7 @@ tab.header(['Product', 'Availability'])
 #---------------------------------------------------------------------------#
 # Output all watches in urls list and their availability                    #
 #---------------------------------------------------------------------------#
-print(tab.draw())
+logging.info('New Check Starting')
+f = open(log_file, 'a')
+f.write(tab.draw() + '\n\n')
+f.close
