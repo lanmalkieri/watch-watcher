@@ -71,9 +71,9 @@ for key,val in watches.items():
             if key == line:
                 url_status = "already_alerted"
 
-#---------------------------------------------------------------------------#
-# If product is not alerted, check stock availility and act accordingly     #
-#---------------------------------------------------------------------------#
+    #---------------------------------------------------------------------------#
+    # If product is not alerted, check stock availility and act accordingly     #
+    #---------------------------------------------------------------------------#
     if url_status == 'not_alerted':
         if "InStock" in val:
             f = open(cache_file, 'a')
